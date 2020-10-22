@@ -13,13 +13,53 @@ const inputSanitizer = (text, setter) => {
   return parseFloat(text);
 };
 
+const getGPA = (text) => {
+  parseFloat(text);
+  
+  if(text >= 93){
+    return(4.0);
+  } 
+  else if (text >= 90){
+    return(3.7);
+  }
+  else if (text >= 87){
+    return(3.3);
+  }
+  else if (text >= 83){
+    return(3.0);
+  }
+  else if (text >= 80){
+    return(2.7);
+  }
+  else if (text >= 77){
+    return(2.3);
+  }
+  else if (text >= 73){
+    return(2.0);
+  }
+  else if (text >= 70){
+    return(1.7);
+  }
+  else if (text >= 67){
+    return(1.3);
+  }
+  else if (text >= 65){
+    return(1.0);
+  }
+  
+  else if (text < 65) {
+    return(0.0);
+  }
+  
+}
+
 
 const GradeFields = () => {
   const [num1, setNum1] = useState(0);
   const [num2, setNum2] = useState(0);
   const [num3, setNum3] = useState(0);
   const [total, setTotal] = useState(0);
-  const three = 3;
+  const [gpa, setGpa] = useState(0);
 
   return(
   <View>
@@ -49,12 +89,12 @@ const GradeFields = () => {
             }}
       />
 
-  
      <Button
         mode="contained"
         onPress={() => {
-          setTotal(inputSanitizer(num1, setNum1) + inputSanitizer(num2, setNum2) + inputSanitizer(num3, setNum3) / three);
+          setTotal(inputSanitizer(num1, setNum1) + inputSanitizer(num2, setNum2) + inputSanitizer(num3, setNum3));
           
+          setGpa(getGPA(total/3));
         }}
         Title="Calculate GPA"
       />
@@ -62,13 +102,13 @@ const GradeFields = () => {
         <Text>
           Result =
           {' '}
-          {total}
+          {gpa}
         </Text>
+        {total/3}
       </View>
     
   
 </View>
   )};
-
 export default GradeFields;
 
