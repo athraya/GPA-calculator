@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {
   StyleSheet, Text, View, Image, TextInput, Button,
 } from 'react-native';
+import styles from './AssetExample.js'; 
+
 
 
 const inputSanitizer = (text, setter) => {
@@ -62,9 +64,21 @@ const GradeFields = () => {
   const [gpa, setGpa] = useState(0);
 
   return(
-  <View>
-    <Text>Course 1</Text>   
+  <View style = {styles.container}>
+    <Text
+        style = {{
+          margin: 'auto'
+        }}>
+        <h3>Course 1</h3>
+      </Text>   
       <TextInput class = "grade" id = "c1" type="number" placeholder="Grade"
+      style={{
+          margin: 'auto',
+          height: 40,
+          borderColor: 'gray',
+          borderWidth: 1,
+          width: 130,
+          marginBottom: 5}}
       value={num1.toString()}
           onChangeText={
             (text) => {
@@ -72,16 +86,40 @@ const GradeFields = () => {
             }}
       />
 
-    <Text>Course 2</Text>
+    <Text
+        style = {{
+          margin: 'auto'
+        }}>
+        <h3>Course 2</h3>
+      </Text>
       <TextInput class = "grade" id = "c2" type="number"  placeholder="Grade"
+      style={{
+          margin: 'auto',
+          height: 40,
+          borderColor: 'gray',
+          borderWidth: 1,
+          width: 130,
+          marginBottom: 5}}
         value={num2.toString()}
           onChangeText={
             (text) => {
               setNum2(text);
             }}
       />
-      <Text>Course 3</Text>
+      <Text
+        style = {{
+          margin: 'auto'
+        }}>
+        <h3>Course 3</h3>
+      </Text>
       <TextInput class = "grade" id = "c3" type="number"  placeholder="Grade"
+      style={{
+          margin: 'auto',
+          height: 40,
+          borderColor: 'gray',
+          borderWidth: 1,
+          width: 130,
+          marginBottom: 5}}
         value={num3.toString()}
           onChangeText={
             (text) => {
@@ -96,15 +134,18 @@ const GradeFields = () => {
           
           setGpa(getGPA(total/3));
         }}
-        Title="Calculate GPA"
+        title = 'Calculate GPA'
       />
-      <View>
-        <Text>
-          Result =
+      <View >
+        <Text
+        style = {{
+          margin: 'auto'
+        }}>
+          <h2>GPA Result =
           {' '}
           {gpa}
+          </h2>
         </Text>
-        {total/3}
       </View>
     
   
